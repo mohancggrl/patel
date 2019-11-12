@@ -1,0 +1,70 @@
+#=============================================================================
+#
+# UNIX-iBuild-Wildfly_Installation.yml
+#
+# 2019-10-27 1.0.0 Mohan G. <mg86@dxc.com>
+#  - Playbook Creation
+#  - Role: UNIX-iBuild-Wildfly_Installation
+#
+#=============================================================================
+# Parameters:
+# NODE - Target inventory node
+
+# ---
+# SLAM_TASKNAME: UNIX iBuild Wildfly Installation
+# SLAM_FACT_SYSTEM: CentOS, Linux, Redhat
+# SLAM_Q: Play
+# SLAM_DESCRIPTION: This Playbook for Insatll Wildfly.
+# SLAM_FF_WildflyVersion:
+#   type: Text
+#   required: true
+#   ghost: eg. 17.0.1.Final (or) 16.0.0.Final (or) 15.0.1.Final (or) 14.0.1.Final  (or) 13.0.0.Final (or) 12.0.0.Final (or) 11.0.0.Final 
+#   prompt: Enter Wildfly version
+# SLAM_FF_UserName:
+#   type: Text
+#   required: true
+#   ghost: eg. wildfly
+#   prompt: Enter wildfly username
+# SLAM_FF_UserGroup:
+#   type: Text
+#   required: true
+#   ghost: eg. wildfly
+#   prompt: Enter wildfly group
+# SLAM_FF_StartOptions:
+#   type: Text
+#   required: true
+#   ghost: eg. -Djboss.socket.binding.port-offset=700 -Djboss.management.http.port=9090 -Djboss.bind.address=localhost -Djboss.bind.address.management=localhost
+#   prompt: Enter Starting options
+# SLAM_FF_ServiceName:
+#   type: Text
+#   required: true
+#   ghost: eg. wildfly
+#   prompt: Enter Service name
+# SLAM_FF_JMX_USERNAME:
+#   type: Text
+#   required: true
+#   ghost: eg. wildfly
+#   prompt: Enter JMX User name
+# SLAM_FF_JMX_GROUP:
+#   type: Text
+#   required: true
+#   ghost: eg. wildfly
+#   prompt: Enter JMX Group
+# SLAM_FF_JMX_PASSWORD:
+#   type: Text
+#   required: true
+#   ghost: eg. wildfly
+#   prompt: Enter JMX Password
+# SLAM_FF_Domain_options:
+#   type: Text
+#   required: false
+#   prompt: Enter Domain options
+# ---
+
+---
+ - hosts: "{{ NODE }}"
+ # raffia will not allow local_action calls with become enabled for security reasons
+ # become: true
+ # become_method: sudo
+   roles:
+     - UNIX-iBuild-Jbosseap_Installation 

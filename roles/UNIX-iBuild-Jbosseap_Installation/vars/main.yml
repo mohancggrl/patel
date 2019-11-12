@@ -1,0 +1,5 @@
+---
+InstallPath: /opt/{{ServiceName}}
+url: https://artifactory.csc.com/artifactory/installers/JBoss%20EAP
+TempDir: /tmp
+Domain: "{{Domain_options | default('') }}"
